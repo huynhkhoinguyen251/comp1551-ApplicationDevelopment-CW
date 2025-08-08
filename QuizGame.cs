@@ -4,53 +4,60 @@ using System.Diagnostics;
 
 namespace Comp1551_ApplicationDev_CW
 {
+    // Main game logic class - manages quiz state and questions
     public class QuizGame
     {
-        private List<Question> _questions;
-        private Stopwatch _gameTimer;
-        private int _currentQuestionIndex;
-        private List<bool> _userAnswers;
-        private List<string> _userResponses;
+        // Private fields - encapsulation principle
+        private List<Question> _questions;        // Variable-size data structure - stores all questions
+        private Stopwatch _gameTimer;            // Tracks time spent on quiz
+        private int _currentQuestionIndex;       // Current question position (0-based)
+        private List<bool> _userAnswers;         // Stores correctness of each answer
+        private List<string> _userResponses;     // Stores actual user responses
 
-        public int TotalQuestions => _questions.Count;
-        public int CurrentQuestionIndex => _currentQuestionIndex;
-        public bool IsGameInProgress { get; private set; }
-        public TimeSpan ElapsedTime => _gameTimer?.Elapsed ?? TimeSpan.Zero;
+        // Read-only properties - controlled access to internal state
+        public int TotalQuestions => _questions.Count;                    // Returns number of questions
+        public int CurrentQuestionIndex => _currentQuestionIndex;         // Returns current position
+        public bool IsGameInProgress { get; private set; }               // Game active status
+        public TimeSpan ElapsedTime => _gameTimer?.Elapsed ?? TimeSpan.Zero;  // Time elapsed
 
+        // Constructor - initializes all data structures
         public QuizGame()
         {
-            _questions = new List<Question>();
-            _gameTimer = new Stopwatch();
-            _userAnswers = new List<bool>();
-            _userResponses = new List<string>();
-            _currentQuestionIndex = 0;
-            IsGameInProgress = false;
+            _questions = new List<Question>();      // Initialize empty question list
+            _gameTimer = new Stopwatch();          // Initialize timer
+            _userAnswers = new List<bool>();       // Initialize answer tracking
+            _userResponses = new List<string>();   // Initialize response tracking
+            _currentQuestionIndex = 0;             // Start at first question
+            IsGameInProgress = false;              // Game not started
         }
 
+        // Adds question to quiz - polymorphism (accepts any Question type)
         public void AddQuestion(Question question)
         {
-            if (question == null)
+            if (question == null)                  // Validation - prevent null
                 throw new ArgumentNullException(nameof(question));
 
-            _questions.Add(question);
+            _questions.Add(question);              // Add to list
         }
 
+        // Removes question at specified index - returns success status
         public bool RemoveQuestion(int index)
         {
-            if (index < 0 || index >= _questions.Count)
+            if (index < 0 || index >= _questions.Count)  // Bounds checking
                 return false;
 
-            _questions.RemoveAt(index);
-            return true;
+            _questions.RemoveAt(index);            // Remove from list
+            return true;                           // Success
         }
 
+        // Updates question at index - polymorphism (accepts any Question type)
         public bool UpdateQuestion(int index, Question newQuestion)
         {
-            if (index < 0 || index >= _questions.Count || newQuestion == null)
+            if (index < 0 || index >= _questions.Count || newQuestion == null)  // Validation
                 return false;
 
-            _questions[index] = newQuestion;
-            return true;
+            _questions[index] = newQuestion;       // Replace question
+            return true;                           // Success
         }
 
         public Question GetQuestion(int index)

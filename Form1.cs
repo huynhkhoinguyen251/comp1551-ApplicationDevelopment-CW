@@ -1,41 +1,22 @@
-// Import necessary libraries for UI, graphics, collections, and LINQ operations
+
 using System.Collections.Generic;  // For List<T> collections
 using System.Drawing.Drawing2D;    // For gradient brushes and advanced graphics
 using System.Linq;                 // For LINQ operations like FirstOrDefault()
 
 namespace Comp1551_ApplicationDev_CW;
-
-/// <summary>
-/// Main application form - serves as the entry point and main menu for the Geography Quiz Game
-/// This form demonstrates:
-/// - UI design with custom graphics and styling
-/// - Event handling for user interactions
-/// - Integration with game logic classes
-/// - Mode selection between Create Game and Play Game
-/// </summary>
 public partial class Form1 : Form
 {
     // Private field to hold the main game logic object
     // ENCAPSULATION: Game logic is contained within this object
     private QuizGame _quizGame;
-
-    /// <summary>
-    /// Constructor - initializes the main form and sets up the quiz game
-    /// Called automatically when the application starts
-    /// </summary>
     public Form1()
     {
-        InitializeComponent();        // Initialize Windows Forms components (auto-generated)
-        _quizGame = new QuizGame();   // Create new game instance
-        AddSampleQuestions();         // Pre-populate with sample geography questions
-        SetupUI();                    // Configure the user interface
+        InitializeComponent();        
+        _quizGame = new QuizGame();  
+        AddSampleQuestions();         
+        SetupUI();                    
     }
 
-    /// <summary>
-    /// Adds sample geography questions to the quiz for demonstration purposes
-    /// Creates examples of all three question types to show functionality
-    /// POLYMORPHISM: Adds different question types to the same collection
-    /// </summary>
     private void AddSampleQuestions()
     {
         // Sample Multiple Choice Question - demonstrates 4 options with one correct answer
@@ -108,7 +89,7 @@ public partial class Form1 : Form
 
         // Create Game button with gradient and hover effects
         Button btnCreateGame = CreateStyledButton(
-            "🎯 Mode 1: Create Game\n📝 Add & Edit Questions",
+            "🎯 Mode 1: Create Game\n📝 Add / Edit Questions",
             new Point(150, 200),
             new Size(200, 80),
             Color.FromArgb(46, 125, 50), // Dark green

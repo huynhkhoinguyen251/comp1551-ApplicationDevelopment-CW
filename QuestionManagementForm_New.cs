@@ -178,7 +178,7 @@ namespace Comp1551_ApplicationDev_CW
         private TextBox _questionText = null!;
         private Panel _answerPanel = null!;
 
-        public AddEditQuestionFormNew(Question? existingQuestion = null)
+        public AddEditQuestionFormNew(Question? existingQuestion = null)        
         {
             _controller = new QuestionFormController();
             SetupUI();
@@ -188,7 +188,7 @@ namespace Comp1551_ApplicationDev_CW
         private void SetupUI()
         {
             this.Text = "✏️ Add/Edit Question";
-            this.Size = new Size(600, 500);
+            this.Size = new Size(600, 550);
             this.StartPosition = FormStartPosition.CenterParent;
             this.BackColor = Color.FromArgb(250, 250, 250);
 
@@ -220,7 +220,7 @@ namespace Comp1551_ApplicationDev_CW
             };
             _typeCombo.Items.AddRange(_controller.GetQuestionTypes().ToArray());
             _typeCombo.SelectedIndexChanged += TypeCombo_SelectedIndexChanged;
-
+ 
             Label lblQuestion = new Label
             {
                 Text = "❓ Question Text:",

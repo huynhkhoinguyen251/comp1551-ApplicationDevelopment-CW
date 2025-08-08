@@ -24,7 +24,7 @@ namespace Comp1551_ApplicationDev_CW
         private void SetupUI()
         {
             this.Text = "🎮 Geography Quiz - Play Mode";
-            this.Size = new Size(800, 600);
+            this.Size = new Size(800, 650);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.FromArgb(245, 245, 245);
 
@@ -89,7 +89,7 @@ namespace Comp1551_ApplicationDev_CW
             _answerPanel = new Panel
             {
                 Location = new Point(50, 300),
-                Size = new Size(700, 200),
+                Size = new Size(700, 220),
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = Color.FromArgb(248, 249, 250)
             };
@@ -98,7 +98,7 @@ namespace Comp1551_ApplicationDev_CW
             {
                 Text = "➡️ Next Question",
                 Size = new Size(150, 50),
-                Location = new Point(600, 520),
+                Location = new Point(600, 550),
                 Font = new Font("Arial", 12, FontStyle.Bold),
                 BackColor = Color.FromArgb(46, 125, 50),
                 ForeColor = Color.White,
@@ -164,7 +164,7 @@ namespace Comp1551_ApplicationDev_CW
                 {
                     Text = $"{optionLetters[i]}. {options[i]}",
                     Location = new Point(30, 20 + i * 45),
-                    Size = new Size(630, 35),
+                    Size = new Size(630, 40),
                     Font = new Font("Arial", 11),
                     ForeColor = Color.FromArgb(33, 33, 33),
                     Tag = i,
